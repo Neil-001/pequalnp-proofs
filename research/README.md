@@ -16,11 +16,20 @@ python3 research/verify_matching.py
 
 [CheckpointVerification.lean](CheckpointVerification.lean) proves a three-block alternating characterization of deterministic reachability and a bound for computations of bounded configuration width. The unrestricted time speedup and the machine implementation of the verifier remain open.
 
-To check both Lean files with the project's Mathlib cache installed:
+## L-meta-651 · Petersen edge function
+
+[PetersenElimination.lean](PetersenElimination.lean) proves an unrestricted lower bound of 15 gates and gives a circuit with 20. Deleting one vertex leaves a function requiring at least 13 gates. Deleting two leaves a function requiring at least 11, whether the vertices are adjacent or nonadjacent. These estimates use the project's five- and six-cycle lower bounds and its reader lemma. Boolean identities for the residual graphs and all vertex renumberings are checked in Lean.
+
+Setting vertex 0 to true leaves a function of size exactly 11. Setting it to false admits a 16-gate circuit. Theorem `fanoutConclusionAtEighteen` checks that the reader lemma's conclusion already holds at a hypothetical budget of 18, using savings of two gates on the false branch and four on the true branch. A proof that 19 gates are impossible must use additional information about the circuit.
+
+[A separate counting argument](PetersenDepthOne.md) proves that 20 gates are necessary for monotone circuits with at most one AND on each input-to-output path, including circuits with shared wires. This argument is written out in prose.
+
+To check the Lean files with the project's Mathlib cache installed:
 
 ```sh
 cd lean
-lake build PEqualNP.MetaComplexity.Helpers.Support PEqualNP.Defs.TimeAlt
+lake build PEqualNP.MetaComplexity.Helpers.Support PEqualNP.Defs.TimeAlt PEqualNP.MetaComplexity.L106
 lake env lean ../research/CyclicMatchings.lean
 lake env lean ../research/CheckpointVerification.lean
+lake env lean -j1 ../research/PetersenElimination.lean
 ```
