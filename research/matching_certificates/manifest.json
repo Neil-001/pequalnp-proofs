@@ -1,0 +1,323 @@
+{
+  "problem": "L-meta-652",
+  "generator": "matching_synthesis.py",
+  "checker": "lrat-trim rel-0.2.0",
+  "proof_format": "gzip-compressed binary LRAT. Regenerate each CNF with its arguments and replace CNF with a local pathname. Verify the decompressed proof against that CNF.",
+  "basis": [
+    "An 11-gate encoding is unsatisfiable on inputs with at most one true bit on each side.",
+    "Fixing any input true leaves a restriction of size at least 11. Fixing it false leaves a restriction of size at least 9. Input permutations, a simultaneous reflection, and transposition cover all six inputs.",
+    "Constant propagation under a pin eliminates every gate with a constant operand. The remaining circuit must meet the corresponding restricted lower bound.",
+    "A 12-gate circuit for the full task would satisfy the true-pin bounds even when its output tests are limited to the 16 sparse rows. This strengthened instance is unsatisfiable.",
+    "Number edges by 3*color+left, with right=(left+color) mod 3. Precompute each listed set of raw products, then allow all six raw inputs and those products in the tail. All five-product representatives exclude tail size nine. Thus at most four distinct direct products are possible at size fourteen.",
+    "In each four-product case exclude additional raw products, using the previous result. Both pin bounds apply to the complete fourteen gates, including the four precomputed products. All seven cases are unsatisfiable.",
+    "Representatives are lexicographically least under independent cyclic shifts of the left and right triples, simultaneous reflection, and optional interchange of the two sides.",
+    "The LRAT checker validates the generated CNF. The reduction from the project circuit model to these CNF instances is an external argument."
+  ],
+  "instances": {
+    "eleven": {
+      "arguments": [
+        "11",
+        "CNF",
+        "--canonical",
+        "--sparse"
+      ],
+      "cnf_sha256": "709e7da12a169d1a88fc0dfd8ca7dd0a93edac2ac287494a6f2578221849b20e",
+      "proof": "eleven.lrat.gz",
+      "uncompressed_proof_sha256": "d78603f231d778c0cb66a4636e60746f4775266a22f910a91b4ef22e180e74eb"
+    },
+    "fixed-10": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--fix-first"
+      ],
+      "cnf_sha256": "c9f3eccd49b2dc39f81105d704cea01eff0ae46292e081b62d4eed33a408b7a4",
+      "proof": "fixed-10.lrat.gz",
+      "uncompressed_proof_sha256": "20d0826e78bc742dd0d92c34739cee917d4f2fb9b282345ad293139b742bbc12"
+    },
+    "pinned-12-sparse": {
+      "arguments": [
+        "12",
+        "CNF",
+        "--canonical",
+        "--sparse",
+        "--pins"
+      ],
+      "cnf_sha256": "6481c6319f98ad7090bd9a55fd17f7bca4d1b0e188cb9901515cbcf4960fe26e",
+      "proof": "pinned-12-sparse.lrat.gz",
+      "uncompressed_proof_sha256": "52cb8f0d992c341ed572c6dedbf4d31c2c2c745bdf60905f8bd2b95c29be90e7"
+    },
+    "fixedzero-8": {
+      "arguments": [
+        "8",
+        "CNF",
+        "--canonical",
+        "--fix-zero",
+        "--restricted-first"
+      ],
+      "cnf_sha256": "bc391c62f323d3b1fe6b6e1fefb81618fe170b32314cd92ab4013334a7b10c2b",
+      "proof": "fixedzero-8.lrat.gz",
+      "uncompressed_proof_sha256": "85667282d619aced1c1e63053f7012fda7d0a67b3edd0bae7b6646a8759d0661"
+    },
+    "front5-0": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "cnf_sha256": "594976ace59d51ead71e6ead967d09d0a41d909aff735b7935aaf57047817533",
+      "proof": "front5-0.lrat.gz",
+      "uncompressed_proof_sha256": "143ed75cef521558e28bfc85883029703b17480b0d076d5441b8745950dc38b8"
+    },
+    "front5-1": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "cnf_sha256": "82a0881b4baaaf47b08c88aea04563937b151c136cf9677ce5d4c988dc26c1ed",
+      "proof": "front5-1.lrat.gz",
+      "uncompressed_proof_sha256": "9637a8016b05c4495537215e33448032b3645e3d6fe821c35ba0acd9890f6afb"
+    },
+    "front5-2": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "2",
+        "3",
+        "7"
+      ],
+      "cnf_sha256": "6c9c335b871b03ebc470354b3c53a323c62b167fc27f001991fcfe03986bb812",
+      "proof": "front5-2.lrat.gz",
+      "uncompressed_proof_sha256": "2c6e649e044a5ecd1e1acc2ffcf512bebdb1d38eb3d6999f389f487908a11a02"
+    },
+    "front5-3": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "3",
+        "4",
+        "6"
+      ],
+      "cnf_sha256": "8bd5f007fb9d83454a105fdbf3e25f20e49a14120c794e49f639a47f86f9c8d2",
+      "proof": "front5-3.lrat.gz",
+      "uncompressed_proof_sha256": "33b4755ffed3d27d84687a49a982bdecf4da644a03406c1c98e9acad2e78b4e2"
+    },
+    "front5-4": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "3",
+        "4",
+        "8"
+      ],
+      "cnf_sha256": "0091d8112b5b36f87cac0abe943d73b1a77e848c0aa6865c5bc3ac5eadbb86f0",
+      "proof": "front5-4.lrat.gz",
+      "uncompressed_proof_sha256": "13a1b3cddc00146ee2a1182e00ca3aa7a01c80cf9457816161478a4c1ee47920"
+    },
+    "front5-5": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "3",
+        "6",
+        "8"
+      ],
+      "cnf_sha256": "81eeea72f67dd51d09016e81a40fe352a01ec643525f544e4a670056184d1a4b",
+      "proof": "front5-5.lrat.gz",
+      "uncompressed_proof_sha256": "087391103d3f863abecc2f7c156eabf44029492562b9fa4bfb154f5caba99dd0"
+    },
+    "front5-6": {
+      "arguments": [
+        "9",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--products",
+        "0",
+        "1",
+        "4",
+        "5",
+        "6"
+      ],
+      "cnf_sha256": "0bf35e151791502450ec2d60f2dc7d0330e173826394f1c3d2a0c566f73c7c33",
+      "proof": "front5-6.lrat.gz",
+      "uncompressed_proof_sha256": "8f30ef0fbaf548f1cd82bf7831bff9528be75eeedac9402aa6b1f23f7bf6981b"
+    },
+    "cap4-0": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "cnf_sha256": "2acd44185e23301d4d2a2d253432192ac44d5bf2035590789f31c3959b5da29c",
+      "proof": "cap4-0.lrat.gz",
+      "uncompressed_proof_sha256": "4dce2bf35f43939d4845875545be4231f83ddd7dff8b7c9ba5a608beb17ddb03"
+    },
+    "cap4-1": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "3",
+        "4"
+      ],
+      "cnf_sha256": "04b5b46cc03697fa5b19d73d14880ebfaec1f780fe0d263dd72deda1d8988199",
+      "proof": "cap4-1.lrat.gz",
+      "uncompressed_proof_sha256": "196611f887032c0a8d87e506c7a8a50c12a2f5181ebda3ea69c7bf5ba5d8500a"
+    },
+    "cap4-2": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "3",
+        "6"
+      ],
+      "cnf_sha256": "2238119826f1ab088d312e0f8c231ea4e92f318f18a0dca7ab7130d4e098fa77",
+      "proof": "cap4-2.lrat.gz",
+      "uncompressed_proof_sha256": "1ddc94ed3f27d0e14895482abbce5eac899410dceb504dc76a6cc85d308d347e"
+    },
+    "cap4-3": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "3",
+        "7"
+      ],
+      "cnf_sha256": "ec5ed4c4b9640c71d21cdea5e577a3e78c69816371ef4b15870ac600018aaf3c",
+      "proof": "cap4-3.lrat.gz",
+      "uncompressed_proof_sha256": "be43718c46b8c5556dcca80037b01fc085bc1184a16f7f645048a2f6c2ed39a9"
+    },
+    "cap4-4": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "4",
+        "5"
+      ],
+      "cnf_sha256": "7c3bef5d893a9fca15b9dc691cbb48969cccd8f5b1917f6a480744da3755cf8a",
+      "proof": "cap4-4.lrat.gz",
+      "uncompressed_proof_sha256": "27582b806b49169218b83190dbc140c2b8e9649530552af4c4901b1e3d57ab09"
+    },
+    "cap4-5": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "4",
+        "6"
+      ],
+      "cnf_sha256": "29e39325c103edafa0d2bcd86331400979dab723e762b218013057d7eaf55175",
+      "proof": "cap4-5.lrat.gz",
+      "uncompressed_proof_sha256": "ba97fd53c633b8cadb3f23e268c801a0868bc8e69109ca403f92e36040bfa395"
+    },
+    "cap4-6": {
+      "arguments": [
+        "10",
+        "CNF",
+        "--canonical",
+        "--pairs",
+        "--pins",
+        "--pin-zero",
+        "--product-cap",
+        "4",
+        "--products",
+        "0",
+        "1",
+        "4",
+        "8"
+      ],
+      "cnf_sha256": "29e257690f8ad665a2179398f3e5c98e05393e56a2b6774cae3c7f9c30d9327d",
+      "proof": "cap4-6.lrat.gz",
+      "uncompressed_proof_sha256": "a9415f763888f91de1e6258dbfd4c88ea7ab2ed6783dc5530ae901f5d3873439"
+    }
+  }
+}
